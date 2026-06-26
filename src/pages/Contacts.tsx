@@ -33,8 +33,8 @@ export default function Contacts() {
                 {
                   icon: 'MapPin',
                   t: 'Адрес',
-                  d: 'г. Москва, ул. Мясницкая, 24',
-                  sub: 'Ближайшее метро: Чистые пруды',
+                  d: '9-я просека, 5-я линия, 114',
+                  sub: 'Самара',
                 },
                 {
                   icon: 'Phone',
@@ -130,7 +130,7 @@ export default function Contacts() {
           <div className="rounded-3xl overflow-hidden h-72 bg-secondary border border-border flex items-center justify-center">
             <div className="text-center text-muted-foreground">
               <Icon name="Map" size={48} className="mx-auto mb-3 text-primary/40" />
-              <p className="font-display text-xl font-600">г. Москва, ул. Мясницкая, 24</p>
+              <p className="font-display text-xl font-600">Самара, 9-я просека, 5-я линия, 114</p>
               <p className="text-sm mt-1">Карта будет здесь</p>
             </div>
           </div>
