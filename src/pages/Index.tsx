@@ -190,11 +190,20 @@ export default function Index() {
         id="home"
         className="relative min-h-screen flex items-center pt-16 overflow-hidden"
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO_IMG})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/40" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HERO_IMG}
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/4110208/4110208-uhd_2560_1440_25fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/50" />
         <div className="container relative z-10 py-20">
           <div className="max-w-2xl animate-fade-in">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/40 text-accent text-sm font-600 mb-6">
