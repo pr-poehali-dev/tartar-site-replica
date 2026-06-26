@@ -81,9 +81,11 @@ export default function Contacts() {
                 <Icon name="MessageCircle" size={18} className="mr-2" />
                 WhatsApp
               </Button>
-              <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600">
-                <Icon name="Phone" size={18} className="mr-2" />
-                Позвонить
+              <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600" asChild>
+                <a href="tel:+79178163030">
+                  <Icon name="Phone" size={18} className="mr-2" />
+                  Позвонить
+                </a>
               </Button>
             </div>
           </div>
