@@ -1,51 +1,56 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import { products } from '@/data/products';
 
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/8e856a4a-a6e3-43b5-86df-f255d2315d3d/files/af2077c9-d814-4778-83b1-d9829c1c6eae.jpg';
 const ASSORT_IMG =
   'https://cdn.poehali.dev/projects/8e856a4a-a6e3-43b5-86df-f255d2315d3d/files/08b9fefb-5c43-4980-bc7b-2e712660c9a1.jpg';
 
-const reviews = [
+const sections = [
   {
-    name: 'Анна Котова',
-    text: 'Беру мясо только здесь уже полгода. Рибай — это что-то невероятное, гости в восторге от стейков!',
-    rating: 5,
+    href: '/catalog',
+    label: 'Каталог',
+    desc: '40+ видов свежего мяса напрямую с ферм',
+    icon: 'ShoppingBasket',
+    img: HERO_IMG,
   },
   {
-    name: 'Дмитрий Орлов',
-    text: 'Привезли точно в срок, всё свежее и охлаждённое. Видно, что за качеством реально следят.',
-    rating: 5,
+    href: '/delivery',
+    label: 'Доставка',
+    desc: 'За 2 часа в термобоксе 0…+4 °C',
+    icon: 'Truck',
+    img: ASSORT_IMG,
   },
   {
-    name: 'Мария Лебедева',
-    text: 'Фарш — небо и земля по сравнению с магазинным. Котлеты получаются сочные. Заказываю каждую неделю.',
-    rating: 5,
+    href: '/reviews',
+    label: 'Отзывы',
+    desc: '500+ довольных покупателей, рейтинг 4.9',
+    icon: 'Star',
+    img: ASSORT_IMG,
+  },
+  {
+    href: '/about',
+    label: 'О нас',
+    desc: 'С 2014 года — напрямую с 12 проверенных ферм',
+    icon: 'Leaf',
+    img: HERO_IMG,
+  },
+  {
+    href: '/contacts',
+    label: 'Контакты',
+    desc: 'г. Москва, ежедневно с 9:00 до 21:00',
+    icon: 'MapPin',
+    img: ASSORT_IMG,
   },
 ];
 
-const featured = products.slice(0, 6);
-
 export default function Index() {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
   return (
     <Layout>
       {/* Hero */}
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center overflow-hidden"
-      >
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <video
           autoPlay
           muted
@@ -59,7 +64,7 @@ export default function Index() {
             type="video/mp4"
           />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/85 to-charcoal/40" />
         <div className="container relative z-10 py-20">
           <div className="max-w-2xl animate-fade-in">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/20 border border-accent/40 text-accent text-sm font-600 mb-6">
@@ -92,7 +97,7 @@ export default function Index() {
                 className="border-cream/40 text-cream hover:bg-cream/10 font-600 text-base bg-transparent"
                 asChild
               >
-                <a href="#about">О нашей лавке</a>
+                <Link to="/about">О нашей лавке</Link>
               </Button>
             </div>
             <div className="flex flex-wrap gap-8 mt-12">
@@ -112,8 +117,8 @@ export default function Index() {
       </section>
 
       {/* Advantages */}
-      <section className="py-16 bg-secondary">
-        <div className="container grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-14 bg-secondary">
+        <div className="container grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
             { icon: 'Snowflake', t: 'Охлаждённое', d: 'Никакой заморозки — только свежее мясо' },
             { icon: 'MapPin', t: 'Знаем ферму', d: 'Прозрачное происхождение каждого отруба' },
@@ -131,193 +136,41 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Catalog preview */}
-      <section id="catalog" className="py-20">
+      {/* Navigation sections */}
+      <section className="py-16">
         <div className="container">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 gap-4">
-            <div>
-              <span className="text-accent font-600 uppercase tracking-widest text-sm mb-2 block">Каталог</span>
-              <h2 className="font-display text-4xl md:text-5xl font-700">Свежее каждый день</h2>
-            </div>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white font-600 shrink-0" asChild>
-              <Link to="/catalog">
-                Весь каталог <Icon name="ArrowRight" size={16} className="ml-1" />
-              </Link>
-            </Button>
+          <div className="text-center mb-10">
+            <span className="text-accent font-600 uppercase tracking-widest text-sm">Навигация</span>
+            <h2 className="font-display text-4xl md:text-5xl font-700 mt-2">Что вас интересует?</h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {featured.map((p, i) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sections.map((s, i) => (
               <Link
-                key={p.id}
-                to={`/catalog/${p.id}`}
-                className="group rounded-2xl overflow-hidden bg-card shadow-md hover-lift animate-scale-in block"
-                style={{ animationDelay: `${i * 70}ms`, opacity: 0 }}
+                key={s.href}
+                to={s.href}
+                className="group relative rounded-2xl overflow-hidden h-52 block hover-lift animate-scale-in"
+                style={{ animationDelay: `${i * 60}ms`, opacity: 0 }}
               >
-                <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  {p.tag && (
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-accent text-white text-xs font-700">
-                      {p.tag}
-                    </span>
-                  )}
-                  <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-charcoal/70 text-cream text-xs font-500">
-                    {p.category}
+                <img
+                  src={s.img}
+                  alt={s.label}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent group-hover:via-charcoal/60 transition-all duration-300" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-8 h-8 rounded-lg bg-accent/90 flex items-center justify-center">
+                      <Icon name={s.icon} size={16} className="text-white" />
+                    </div>
+                    <h3 className="font-display text-2xl font-700 text-cream">{s.label}</h3>
+                  </div>
+                  <p className="text-cream/75 text-sm">{s.desc}</p>
+                  <span className="flex items-center gap-1 text-accent text-sm font-600 mt-3 group-hover:gap-2 transition-all">
+                    Перейти <Icon name="ArrowRight" size={14} />
                   </span>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-display text-xl font-600 mb-1 group-hover:text-primary transition-colors">
-                    {p.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{p.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-display text-2xl font-700 text-primary">{p.price}</span>
-                      <span className="text-sm text-muted-foreground"> / {p.weight}</span>
-                    </div>
-                    <span className="flex items-center gap-1 text-sm text-accent font-600 group-hover:gap-2 transition-all">
-                      Подробнее <Icon name="ArrowRight" size={14} />
-                    </span>
-                  </div>
-                </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Delivery */}
-      <section id="delivery" className="py-20 bg-charcoal text-cream">
-        <div className="container grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="text-accent font-600 uppercase tracking-widest text-sm">Доставка</span>
-            <h2 className="font-display text-4xl md:text-5xl font-700 mt-2 mb-6">
-              Привезём свежим и холодным
-            </h2>
-            <div className="space-y-5">
-              {[
-                { icon: 'Clock', t: 'Быстро', d: 'Доставка по городу за 2 часа, в пригород — в день заказа.' },
-                { icon: 'Package', t: 'В термобоксах', d: 'Мясо едет в специальной таре с хладоэлементами 0…+4 °C.' },
-                { icon: 'Wallet', t: 'Удобная оплата', d: 'Картой онлайн, наличными или переводом курьеру.' },
-                { icon: 'Gift', t: 'Бесплатно от 3 000 ₽', d: 'При заказе на меньшую сумму доставка — 300 ₽.' },
-              ].map((d) => (
-                <div key={d.t} className="flex gap-4">
-                  <div className="w-11 h-11 shrink-0 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <Icon name={d.icon} size={22} className="text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-600">{d.t}</h3>
-                    <p className="text-cream/70 text-sm">{d.d}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative rounded-3xl overflow-hidden h-[420px]">
-            <img src={ASSORT_IMG} alt="Доставка мяса" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section id="reviews" className="py-20">
-        <div className="container">
-          <div className="text-center mb-12">
-            <span className="text-accent font-600 uppercase tracking-widest text-sm">Отзывы</span>
-            <h2 className="font-display text-4xl md:text-5xl font-700 mt-2">Что говорят покупатели</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-7">
-            {reviews.map((r) => (
-              <div key={r.name} className="p-7 rounded-2xl bg-card shadow-md border border-border">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: r.rating }).map((_, i) => (
-                    <Icon key={i} name="Star" size={18} className="text-accent fill-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground/90 mb-5 leading-relaxed">«{r.text}»</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center font-display font-700 text-primary">
-                    {r.name[0]}
-                  </div>
-                  <span className="font-600">{r.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="py-20 bg-secondary">
-        <div className="container grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative rounded-3xl overflow-hidden h-[420px] order-2 lg:order-1">
-            <img src={HERO_IMG} alt="О нас" className="w-full h-full object-cover" />
-          </div>
-          <div className="order-1 lg:order-2">
-            <span className="text-accent font-600 uppercase tracking-widest text-sm">О нас</span>
-            <h2 className="font-display text-4xl md:text-5xl font-700 mt-2 mb-6">
-              Мясная лавка с характером
-            </h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed">
-              «Тартар» начался в 2014 году с простой идеи — продавать мясо, в качестве которого мы
-              уверены на 100%. Мы лично знаем каждого фермера, ездим на хозяйства и выбираем
-              животных, выращенных без антибиотиков и гормонов.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Никакой заморозки и неизвестного происхождения. Только охлаждённое мясо, разделанное
-              нашими мастерами в день доставки.
-            </p>
-            <Accordion type="single" collapsible className="w-full">
-              {[
-                { q: 'Откуда вы берёте мясо?', a: 'Работаем напрямую с 12 фермерскими хозяйствами Центральной России и Кавказа. Каждое прошло нашу проверку.' },
-                { q: 'Есть ли документы качества?', a: 'Да, на всю продукцию имеются ветеринарные свидетельства и декларации соответствия.' },
-                { q: 'Можно ли заказать редкий отруб?', a: 'Конечно. Напишите нам — найдём и привезём нужный вам отруб под заказ.' },
-              ].map((f) => (
-                <AccordionItem key={f.q} value={f.q}>
-                  <AccordionTrigger className="font-display text-lg font-600 text-left">{f.q}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* Contacts */}
-      <section id="contacts" className="py-20 bg-charcoal text-cream">
-        <div className="container">
-          <div className="text-center mb-12">
-            <span className="text-accent font-600 uppercase tracking-widest text-sm">Контакты</span>
-            <h2 className="font-display text-4xl md:text-5xl font-700 mt-2">Заходите в гости</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-7">
-            {[
-              { icon: 'MapPin', t: 'Адрес', d: 'г. Москва, ул. Мясницкая, 24' },
-              { icon: 'Phone', t: 'Телефон', d: '+7 (495) 123-45-67' },
-              { icon: 'Clock', t: 'Часы работы', d: 'Ежедневно с 9:00 до 21:00' },
-            ].map((c) => (
-              <div key={c.t} className="p-7 rounded-2xl bg-white/5 border border-white/10 text-center">
-                <div className="w-12 h-12 mx-auto rounded-xl bg-accent/20 flex items-center justify-center mb-4">
-                  <Icon name={c.icon} size={24} className="text-accent" />
-                </div>
-                <h3 className="font-display text-lg font-600 mb-1">{c.t}</h3>
-                <p className="text-cream/70">{c.d}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <Button className="bg-accent hover:bg-accent/90 text-white font-700">
-              <Icon name="Send" size={18} className="mr-1" />
-              Написать в Telegram
-            </Button>
-            <Button variant="outline" className="border-cream/30 text-cream hover:bg-cream/10 font-600 bg-transparent">
-              <Icon name="Phone" size={18} className="mr-1" />
-              Позвонить
-            </Button>
           </div>
         </div>
       </section>

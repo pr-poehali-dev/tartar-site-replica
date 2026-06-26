@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { label: 'Главная', href: '/' },
   { label: 'Каталог', href: '/catalog' },
-  { label: 'Доставка', href: '/#delivery' },
-  { label: 'Отзывы', href: '/#reviews' },
-  { label: 'О нас', href: '/#about' },
-  { label: 'Контакты', href: '/#contacts' },
+  { label: 'Доставка', href: '/delivery' },
+  { label: 'Отзывы', href: '/reviews' },
+  { label: 'О нас', href: '/about' },
+  { label: 'Контакты', href: '/contacts' },
 ];
 
 export default function Layout({ children }: { children: React.ReactNode }) {
