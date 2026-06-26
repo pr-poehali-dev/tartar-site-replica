@@ -45,7 +45,7 @@ export default function Contacts() {
                 {
                   icon: 'Mail',
                   t: 'Email',
-                  d: 'order@tartar-meat.ru',
+                  d: 'tartar.meat.market@gmail.com',
                   sub: 'Отвечаем в течение часа',
                 },
                 {
