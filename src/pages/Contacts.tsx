@@ -71,9 +71,11 @@ export default function Contacts() {
             {/* Socials */}
             <h3 className="font-display text-xl font-600 mb-4">Мы в мессенджерах</h3>
             <div className="flex flex-wrap gap-3">
-              <Button className="bg-primary hover:bg-meat-dark text-white font-600">
-                <Icon name="Send" size={18} className="mr-2" />
-                Telegram
+              <Button className="bg-primary hover:bg-meat-dark text-white font-600" asChild>
+                <a href="https://t.me/TARTAR_meat_market" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Send" size={18} className="mr-2" />
+                  Telegram
+                </a>
               </Button>
               <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600">
                 <Icon name="MessageCircle" size={18} className="mr-2" />
