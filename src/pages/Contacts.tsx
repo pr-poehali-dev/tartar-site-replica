@@ -126,15 +126,19 @@ export default function Contacts() {
         </div>
       </section>
 
-      {/* Map placeholder */}
+      {/* Map */}
       <section className="py-4 pb-16">
         <div className="container">
-          <div className="rounded-3xl overflow-hidden h-72 bg-secondary border border-border flex items-center justify-center">
-            <div className="text-center text-muted-foreground">
-              <Icon name="Map" size={48} className="mx-auto mb-3 text-primary/40" />
-              <p className="font-display text-xl font-600">Самара, 9-я просека, 5-я линия, 114</p>
-              <p className="text-sm mt-1">Карта будет здесь</p>
-            </div>
+          <div className="rounded-3xl overflow-hidden h-96 border border-border shadow-md">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?text=Самара%2C+9-я+просека%2C+5-я+линия%2C+114&z=16&l=map"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              title="Карта"
+              style={{ display: 'block' }}
+            />
           </div>
         </div>
       </section>
