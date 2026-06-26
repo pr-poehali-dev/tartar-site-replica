@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Icon from '@/components/ui/icon';
@@ -47,11 +48,27 @@ const sections = [
 ];
 
 export default function Index() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const play = () => video.play().catch(() => {});
+    video.addEventListener('ended', play);
+    video.addEventListener('pause', play);
+    play();
+    return () => {
+      video.removeEventListener('ended', play);
+      video.removeEventListener('pause', play);
+    };
+  }, []);
+
   return (
     <Layout>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
