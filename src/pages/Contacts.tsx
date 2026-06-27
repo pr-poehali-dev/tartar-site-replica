@@ -33,19 +33,19 @@ export default function Contacts() {
                 {
                   icon: 'MapPin',
                   t: 'Адрес',
-                  d: '9-я просека, 5-я линия, 114',
-                  sub: 'Самара',
+                  d: 'г. Москва, ул. Мясницкая, 24',
+                  sub: 'Ближайшее метро: Чистые пруды',
                 },
                 {
                   icon: 'Phone',
                   t: 'Телефон',
-                  d: '+7 (917) 816-30-30',
+                  d: '+7 (495) 123-45-67',
                   sub: 'Ежедневно с 9:00 до 21:00',
                 },
                 {
                   icon: 'Mail',
                   t: 'Email',
-                  d: 'tartar.meat.market@gmail.com',
+                  d: 'order@tartar-meat.ru',
                   sub: 'Отвечаем в течение часа',
                 },
                 {
@@ -71,21 +71,17 @@ export default function Contacts() {
             {/* Socials */}
             <h3 className="font-display text-xl font-600 mb-4">Мы в мессенджерах</h3>
             <div className="flex flex-wrap gap-3">
-              <Button className="bg-primary hover:bg-meat-dark text-white font-600" asChild>
-                <a href="https://t.me/TARTAR_meat_market" target="_blank" rel="noopener noreferrer">
-                  <Icon name="Send" size={18} className="mr-2" />
-                  Telegram
-                </a>
+              <Button className="bg-primary hover:bg-meat-dark text-white font-600">
+                <Icon name="Send" size={18} className="mr-2" />
+                Telegram
               </Button>
               <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600">
                 <Icon name="MessageCircle" size={18} className="mr-2" />
                 WhatsApp
               </Button>
-              <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600" asChild>
-                <a href="tel:+79178163030">
-                  <Icon name="Phone" size={18} className="mr-2" />
-                  Позвонить
-                </a>
+              <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/10 font-600">
+                <Icon name="Phone" size={18} className="mr-2" />
+                Позвонить
               </Button>
             </div>
           </div>
@@ -128,19 +124,15 @@ export default function Contacts() {
         </div>
       </section>
 
-      {/* Map */}
+      {/* Map placeholder */}
       <section className="py-4 pb-16">
         <div className="container">
-          <div className="rounded-3xl overflow-hidden h-96 border border-border shadow-md">
-            <iframe
-              src="https://yandex.ru/map-widget/v1/?text=Самара%2C+9-я+просека%2C+5-я+линия%2C+114&z=16&l=map"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen
-              title="Карта"
-              style={{ display: 'block' }}
-            />
+          <div className="rounded-3xl overflow-hidden h-72 bg-secondary border border-border flex items-center justify-center">
+            <div className="text-center text-muted-foreground">
+              <Icon name="Map" size={48} className="mx-auto mb-3 text-primary/40" />
+              <p className="font-display text-xl font-600">г. Москва, ул. Мясницкая, 24</p>
+              <p className="text-sm mt-1">Карта будет здесь</p>
+            </div>
           </div>
         </div>
       </section>
